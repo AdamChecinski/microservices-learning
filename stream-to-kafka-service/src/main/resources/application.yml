@@ -1,0 +1,3 @@
+stream-to-kafka-service:
+  base-url: https://stream.wikimedia.org
+  uri: /v2/stream/recentchange
