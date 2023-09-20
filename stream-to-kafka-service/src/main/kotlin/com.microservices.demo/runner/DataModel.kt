@@ -18,6 +18,10 @@ data class RecentChange(
     val bot: Boolean?,
     @JsonProperty("notify_url")
     val notifyUrl: String?,
+    val minor: Boolean?,
+    val patrolled: Boolean?,
+    val length: Length?,
+    val revision: Revision?,
     @JsonProperty("server_url")
     val serverUrl: String?,
     @JsonProperty("server_name")
@@ -39,4 +43,14 @@ data class Meta(
     val topic: String?,
     val partition: Int?,
     val offset: Int?
+)
+
+data class Length(
+    val old: Int?,
+    val new: Int?
+)
+
+data class Revision(
+    val old: Int?,
+    val new: Int?
 )

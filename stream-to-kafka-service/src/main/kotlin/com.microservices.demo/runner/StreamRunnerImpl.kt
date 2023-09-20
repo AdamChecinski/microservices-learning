@@ -43,7 +43,9 @@ class StreamRunnerImpl(
                 if (content.data() != null) {
                     val readValue = mapper.readValue(content.data(), RecentChange::class.java)
                     logger.info {
-                        readValue.toString()
+                        "\n\n" +
+                        mapper.readTree(content.data()).toPrettyString() +
+                        "\n\n"
                     }
                 } else {
                     logger.info(
