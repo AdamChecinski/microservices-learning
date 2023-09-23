@@ -1,4 +1,4 @@
-package com.microservices.demo.config
+package com.microservices.demo
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 
