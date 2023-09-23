@@ -1,7 +1,7 @@
 package com.microservices.demo.runner
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.microservices.demo.config.StreamToKafkaServiceConfigData
+import com.microservices.demo.StreamToKafkaServiceConfigData
 import jakarta.annotation.PreDestroy
 import mu.KotlinLogging
 import org.springframework.core.ParameterizedTypeReference

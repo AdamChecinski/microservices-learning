@@ -1,6 +1,5 @@
 package com.microservices.demo
 
-import com.microservices.demo.config.StreamToKafkaServiceConfigData
 import com.microservices.demo.runner.StreamRunnerImpl
 import mu.KotlinLogging
 import org.springframework.boot.CommandLineRunner
