@@ -1,5 +1,6 @@
 rootProject.name = "microservices-demo"
 include("stream-to-kafka-service")
+include("common-config")
 include("app-config-data")
 include("kafka")
 include("kafka:kafka-model")

@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.net.URI
 
 plugins {
     id("org.springframework.boot") version "3.1.3"
@@ -16,17 +17,22 @@ java {
 
 repositories {
     mavenCentral()
+    maven {
+        url = URI( "https://packages.confluent.io/maven")
+    }
 }
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-json")
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.+")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("io.github.microutils:kotlin-logging-jvm:2.0.11")
+    implementation(project(mapOf("path" to ":common-config")))
     implementation(project(mapOf("path" to ":app-config-data")))
-
-
+    implementation(project(mapOf("path" to ":kafka:kafka-admin")))
+    implementation(project(mapOf("path" to ":kafka:kafka-producer")))
+    implementation(project(mapOf("path" to ":kafka:kafka-model")))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

@@ -1,11 +1,10 @@
-import com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    id("org.springframework.boot") version "3.1.3"
+    id("io.spring.dependency-management") version "1.1.3"
     kotlin("jvm") version "1.8.22"
     kotlin("plugin.spring") version "1.8.22"
-    id("com.github.davidmc24.gradle.plugin.avro-base") version "1.8.0"
-
 }
 
 group = "com.microservices.demo"
@@ -20,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.apache.avro:avro:1.11.2")
+    implementation("org.springframework.boot:spring-boot-starter-json")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
@@ -34,12 +33,4 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-val generateAvro = tasks.register<GenerateAvroJavaTask>("generateAvro") {
-    source("src/main/avro")
-    setOutputDir(file("src/main/java"))
-}
-
-tasks.named<JavaCompile>("compileJava").configure {
-    source(generateAvro)
 }

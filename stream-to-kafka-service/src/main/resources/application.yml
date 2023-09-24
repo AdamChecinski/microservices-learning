@@ -1,3 +1,31 @@
 stream-to-kafka-service:
   base-url: https://stream.wikimedia.org
   uri: /v2/stream/recentchange
+
+retry-config:
+  initial-interval-millis: 1000
+  max-interval-millis: 10000
+  multiplier: 2.0
+  max-attempts: 3
+  sleep-time-millis: 2000
+
+kafka-config:
+  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+  schema-registry-url-key: schema.registry.url
+  schema-registry-url: http://localhost:8081
+  topic-name: stream-topic
+  topic-names-to-create:
+    - stream-topic
+  number-of-partitions: 3
+  replication-factor: 3
+
+kafka-producer-config:
+  key-serializer-class: org.apache.kafka.common.serialization.LongSerializer
+  value-serializer-class: io.confluent.kafka.serializers.KafkaJsonSerializer
+  compression-type: snappy
+  acks: all
+  batch-size: 16384
+  batch-size-boost-factor: 100
+  linger-ms: 5
+  request-timeout-ms: 60000
+  retry-count: 5
